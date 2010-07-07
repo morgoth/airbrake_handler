@@ -1,6 +1,6 @@
 = chef-handler-hoptoad
 
-Description goes here.
+Report chef exceptions to hoptoad.
 
 == Note on Patches/Pull Requests
  

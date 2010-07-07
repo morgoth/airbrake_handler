@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "chef-handler-hoptoad"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Chef Hoptoad exception handler}
+    gem.description = %Q{Using Hoptoad in Chef}
     gem.email = "adam@opscode.com"
     gem.homepage = "http://github.com/adamhjk/chef-handler-hoptoad"
     gem.authors = ["Adam Jacob"]
