@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency("chef", "~> 0.9.0")
   s.add_dependency("toadhopper")
+
+  s.add_development_dependency("test-unit", "~> 2.2.0")
 end
