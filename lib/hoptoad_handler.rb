@@ -22,6 +22,7 @@ require "chef/mixin/deep_merge"
 require "toadhopper"
 
 class HoptoadHandler < Chef::Handler
+  VERSION = "0.1.1"
 
   attr_accessor :options, :api_key
 
@@ -50,7 +51,7 @@ class HoptoadHandler < Chef::Handler
   end
 
   def client
-    raise "You must specify hoptoad api key" unless api_key
+    raise "You must specify Hoptoad api key" unless api_key
     Toadhopper.new(api_key)
   end
 end
