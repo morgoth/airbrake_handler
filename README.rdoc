@@ -1,17 +1,20 @@
-= chef-handler-hoptoad
+= Hoptoad handler for Chef
 
 Report chef exceptions to hoptoad.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+== Usage
+
+  gem install hoptoad_handler
+
+In your chef client file (often placed at /etc/chef/client.rb) put:
+
+  require "hoptoad_handler"
+  exception_handlers << HoptoadHandler.new(:api_key => "your-hoptoad-api-key")
+
+You can pass more options to HoptoadHander initializer, i.e:
+
+  HoptoadHandler.new(:api_key => "your-hoptoad-api-key", :framework_env => "production")
 
 == Copyright
 
-Copyright (c) 2010 Adam Jacob. See LICENSE for details.
+Copyright (c) 2011 Adam Jacob, Wojciech Wnętrzak See LICENSE for details.
