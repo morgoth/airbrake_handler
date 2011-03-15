@@ -18,7 +18,6 @@
 
 require "chef"
 require "chef/handler"
-require "chef/mixin/deep_merge"
 require "toadhopper"
 
 class HoptoadHandler < Chef::Handler
@@ -40,14 +39,15 @@ class HoptoadHandler < Chef::Handler
   end
 
   def hoptoad_params
-    Chef::Mixin::DeepMerge.merge({
-      :component => run_status.node, :url => nil, :environment => {},
+    {
+      :notifier_name => "Chef Hoptoad Notifier", :notifier_version => VERSION, :notifier_url => "https://github.com/morgoth/hoptoad_handler",
+      :component => run_status.node.name, :url => nil, :environment => {},
       :params => {
         :start_time => run_status.start_time,
         :end_time => run_status.end_time,
         :elapsed_time => run_status.elapsed_time
       }
-    }, options)
+    }.merge(options)
   end
 
   def client
