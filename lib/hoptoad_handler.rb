@@ -21,7 +21,7 @@ require "chef/handler"
 require "toadhopper"
 
 class HoptoadHandler < Chef::Handler
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 
   attr_accessor :options, :api_key
 
@@ -46,7 +46,8 @@ class HoptoadHandler < Chef::Handler
       :params => {
         :start_time => run_status.start_time.to_s,
         :end_time => run_status.end_time.to_s,
-        :elapsed_time => run_status.elapsed_time.to_s
+        :elapsed_time => run_status.elapsed_time.to_s,
+        :run_list => run_status.node.run_list.to_s
       }
     }.merge(options)
   end
