@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_dependency("toadhopper")
 
   s.add_development_dependency("test-unit", "~> 2.2.0")
+  s.add_development_dependency("mocha")
 end
