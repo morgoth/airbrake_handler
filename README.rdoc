@@ -2,6 +2,8 @@
 
 Report chef exceptions to hoptoad.
 
+Works fine with chef versions: 0.9.x and 0.10.x
+
 == Usage
 
   gem install hoptoad_handler
