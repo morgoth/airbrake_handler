@@ -16,7 +16,6 @@
 # limitations under the License.
 #
 
-require "chef"
 require "chef/handler"
 require "toadhopper"
 
