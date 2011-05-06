@@ -1,28 +1,22 @@
 require "helper"
 
-class HoptoadHandlerTest < Test::Unit::TestCase
-  def setup
+describe HoptoadHandler do
+  before do
     Chef::Log.stubs(:error)
   end
 
-  test "raise error when api_key is not specified" do
-    assert_raise_message("You must specify Hoptoad api key") do
+  it "should raise error when api_key is not specified" do
+    assert_raises ArgumentError do
       HoptoadHandler.new.client
     end
   end
 
-  test "not raise error when api_key is specified" do
-    assert_nothing_raised do
-      HoptoadHandler.new(:api_key => "fake").client
-    end
-  end
-
-  test "setting options" do
+  it "should setting options" do
     handler = HoptoadHandler.new(:framework_env => "staging")
     assert_equal "staging", handler.options[:framework_env]
   end
 
-  test "reporting exception using client" do
+  it "should reporting exception using client" do
     run_status = stub(:failed? => true, :exception => "Exception")
     client = mock
     handler = HoptoadHandler.new(:api_key => "fake")
@@ -34,7 +28,7 @@ class HoptoadHandlerTest < Test::Unit::TestCase
     handler.report
   end
 
-  test "returning hoptoad params" do
+  it "should returning hoptoad params" do
     node = stub(:name => "node-name", :run_list => "cookbook::recipe")
     run_status = stub(:node => node, :start_time => Time.mktime(2011,1,1),
       :end_time => Time.mktime(2011,1,2), :elapsed_time => Time.mktime(2011,1,3))

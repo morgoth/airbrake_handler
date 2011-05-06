@@ -1,3 +1,6 @@
-source "http://rubygems.org"
+source :rubygems
+
+gem "minitest", :platform => :ruby_18
+gem "rake"
 
 gemspec

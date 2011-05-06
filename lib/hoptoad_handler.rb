@@ -52,7 +52,7 @@ class HoptoadHandler < Chef::Handler
   end
 
   def client
-    raise "You must specify Hoptoad api key" unless api_key
+    raise ArgumentError.new("You must specify Hoptoad api key") unless api_key
     Toadhopper.new(api_key)
   end
 end
