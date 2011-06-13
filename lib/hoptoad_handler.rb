@@ -20,7 +20,7 @@ require "chef/handler"
 require "toadhopper"
 
 class HoptoadHandler < Chef::Handler
-  VERSION = "0.1.3"
+  VERSION = "0.1.4"
 
   attr_accessor :options, :api_key
 
