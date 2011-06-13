@@ -37,15 +37,14 @@ class HoptoadHandler < Chef::Handler
     end
   end
 
-  # TODO: remove to_s when toadhopper will be fixed
   def hoptoad_params
     {
       :notifier_name => "Chef Hoptoad Notifier", :notifier_version => VERSION, :notifier_url => "https://github.com/morgoth/hoptoad_handler",
       :component => run_status.node.name, :url => nil, :environment => {},
       :params => {
-        :start_time => run_status.start_time.to_s,
-        :end_time => run_status.end_time.to_s,
-        :elapsed_time => run_status.elapsed_time.to_s,
+        :start_time => run_status.start_time,
+        :end_time => run_status.end_time,
+        :elapsed_time => run_status.elapsed_time,
         :run_list => run_status.node.run_list.to_s
       }
     }.merge(options)

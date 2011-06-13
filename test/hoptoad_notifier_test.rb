@@ -11,12 +11,12 @@ describe HoptoadHandler do
     end
   end
 
-  it "should setting options" do
+  it "should set options" do
     handler = HoptoadHandler.new(:framework_env => "staging")
     assert_equal "staging", handler.options[:framework_env]
   end
 
-  it "should reporting exception using client" do
+  it "should report exception using client" do
     run_status = stub(:failed? => true, :exception => "Exception")
     client = mock
     handler = HoptoadHandler.new(:api_key => "fake")
@@ -28,7 +28,7 @@ describe HoptoadHandler do
     handler.report
   end
 
-  it "should returning hoptoad params" do
+  it "should return hoptoad params" do
     node = stub(:name => "node-name", :run_list => "cookbook::recipe")
     run_status = stub(:node => node, :start_time => Time.mktime(2011,1,1),
       :end_time => Time.mktime(2011,1,2), :elapsed_time => Time.mktime(2011,1,3))

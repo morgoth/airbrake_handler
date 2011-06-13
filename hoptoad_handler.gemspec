@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency("chef", ">= 0.9.0")
-  s.add_dependency("toadhopper")
+  s.add_dependency("toadhopper", ">= 1.3.0")
 
   s.add_development_dependency("mocha")
 end
