@@ -23,6 +23,10 @@ You can pass more options to AirbrakeHander initializer, i.e:
 AirbrakeHandler.new(:api_key => "your-airbrake-api-key", :framework_env => "production")
 ```
 
+## Continuous Integration
+
+[![Build Status](https://secure.travis-ci.org/morgoth/airbrake_handler.png)](http://travis-ci.org/morgoth/airbrake_handler)
+
 ## Copyright
 
 Copyright (c) 2011 Adam Jacob, Wojciech Wnętrzak See LICENSE for details.
