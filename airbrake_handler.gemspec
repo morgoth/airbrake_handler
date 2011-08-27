@@ -1,10 +1,9 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "airbrake_handler"
 
 Gem::Specification.new do |s|
   s.name        = "airbrake_handler"
-  s.version     = AirbrakeHandler::VERSION
+  s.version     = "0.2.0"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Adam Jacob", "Wojciech Wnętrzak"]
   s.email       = ["w.wnetrzak@gmail.com"]
