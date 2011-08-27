@@ -19,7 +19,7 @@
 require "chef/handler"
 require "toadhopper"
 
-class HoptoadHandler < Chef::Handler
+class AirbrakeHandler < Chef::Handler
   VERSION = "0.1.4"
 
   attr_accessor :options, :api_key
@@ -31,15 +31,15 @@ class HoptoadHandler < Chef::Handler
 
   def report
     if run_status.failed?
-      Chef::Log.error("Creating Hoptoad exception report")
+      Chef::Log.error("Creating Airbrake exception report")
 
-      client.post!(run_status.exception, hoptoad_params)
+      client.post!(run_status.exception, airbrake_params)
     end
   end
 
-  def hoptoad_params
+  def airbrake_params
     {
-      :notifier_name => "Chef Hoptoad Notifier", :notifier_version => VERSION, :notifier_url => "https://github.com/morgoth/hoptoad_handler",
+      :notifier_name => "Chef Airbrake Notifier", :notifier_version => VERSION, :notifier_url => "https://github.com/morgoth/airbrake_handler",
       :component => run_status.node.name, :url => nil, :environment => {},
       :params => {
         :start_time => run_status.start_time,
@@ -51,7 +51,7 @@ class HoptoadHandler < Chef::Handler
   end
 
   def client
-    raise ArgumentError.new("You must specify Hoptoad api key") unless api_key
+    raise ArgumentError.new("You must specify Airbrake api key") unless api_key
     Toadhopper.new(api_key)
   end
 end

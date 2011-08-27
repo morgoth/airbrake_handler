@@ -1,21 +1,21 @@
-= Hoptoad handler for Chef
+= Airbrake handler for Chef
 
-Report chef exceptions to hoptoad.
+Report Chef exceptions to Airbrake.
 
 Works fine with chef versions: 0.9.x and 0.10.x
 
 == Usage
 
-  gem install hoptoad_handler
+  gem install airbrake_handler
 
 In your chef client file (often placed at /etc/chef/client.rb) put:
 
-  require "hoptoad_handler"
-  exception_handlers << HoptoadHandler.new(:api_key => "your-hoptoad-api-key")
+  require "airbrake_handler"
+  exception_handlers << AirbrakeHandler.new(:api_key => "your-airbrake-api-key")
 
-You can pass more options to HoptoadHander initializer, i.e:
+You can pass more options to AirbrakeHander initializer, i.e:
 
-  HoptoadHandler.new(:api_key => "your-hoptoad-api-key", :framework_env => "production")
+  AirbrakeHandler.new(:api_key => "your-airbrake-api-key", :framework_env => "production")
 
 == Copyright
 
