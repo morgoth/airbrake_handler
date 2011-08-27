@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "airbrake_handler/version"
+require "airbrake_handler"
 
 Gem::Specification.new do |s|
   s.name        = "airbrake_handler"
