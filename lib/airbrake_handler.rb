@@ -16,12 +16,11 @@
 # limitations under the License.
 #
 
+require "airbrake_handler/version"
 require "chef/handler"
 require "toadhopper"
 
 class AirbrakeHandler < Chef::Handler
-  VERSION = "0.2.0"
-
   attr_accessor :options, :api_key
 
   def initialize(options={})
