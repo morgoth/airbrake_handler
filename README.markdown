@@ -1,6 +1,6 @@
 #  Airbrake handler for Chef
 
-Report [Chef](http://www.opscode.com/chef) exceptions to [Airbrake](http://airbrakeapp.com)
+Report [Chef](http://www.opscode.com/chef) exceptions to [Airbrake](http://airbrake.io)
 
 Works fine with chef versions: 0.9.x and 0.10.x
 
