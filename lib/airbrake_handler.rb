@@ -22,18 +22,26 @@ require "toadhopper"
 class AirbrakeHandler < Chef::Handler
   VERSION = "0.2.1"
 
-  attr_accessor :options, :api_key
+  attr_accessor :options, :api_key, :ignore
 
   def initialize(options={})
     @api_key = options.delete(:api_key)
+    @ignore = options.delete(:ignore) || []
     @options = options
   end
 
   def report
-    if run_status.failed?
+    if run_status.failed? && !ignore_exception?(run_status.exception)
       Chef::Log.error("Creating Airbrake exception report")
 
       client.post!(run_status.exception, airbrake_params)
+    end
+  end
+
+  def ignore_exception?(exception)
+    @ignore.any? do |ignore_case|
+      ignore_case[:class] == exception.class.name &&
+      (!exception.message || !ignore_case[:message] || exception.message.include?(ignore_case[:message]))
     end
   end
 
