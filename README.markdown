@@ -23,6 +23,14 @@ You can pass more options to AirbrakeHander initializer, i.e:
 AirbrakeHandler.new(:api_key => "your-airbrake-api-key", :framework_env => "production")
 ```
 
+If you want to ignore specific exceptions, you can do this like that:
+
+```ruby
+airbrake_handler = AirbrakeHandler.new(:api_key => "your-airbrake-api-key", :framework_env => "production")
+airbrake_handler.ignore << {:class => "SystemExit"}
+airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => "Connection reset by peer"}
+```
+
 ## Continuous Integration
 
 [![Build Status](https://secure.travis-ci.org/morgoth/airbrake_handler.png)](http://travis-ci.org/morgoth/airbrake_handler)
