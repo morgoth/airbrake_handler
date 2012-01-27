@@ -28,7 +28,7 @@ If you want to ignore specific exceptions, you can do this like that:
 ```ruby
 airbrake_handler = AirbrakeHandler.new(:api_key => "your-airbrake-api-key", :framework_env => "production")
 airbrake_handler.ignore << {:class => "SystemExit"}
-airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => "Connection reset by peer"}
+airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => /Connection reset by peer/}
 ```
 
 ## Continuous Integration

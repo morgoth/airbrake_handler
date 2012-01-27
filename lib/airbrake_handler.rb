@@ -26,7 +26,7 @@ class AirbrakeHandler < Chef::Handler
 
   def initialize(options={})
     @api_key = options.delete(:api_key)
-    @ignore = options.delete(:ignore) || []
+    @ignore  = options.delete(:ignore) || []
     @options = options
   end
 
@@ -39,9 +39,8 @@ class AirbrakeHandler < Chef::Handler
   end
 
   def ignore_exception?(exception)
-    @ignore.any? do |ignore_case|
-      ignore_case[:class] == exception.class.name &&
-      (!exception.message || !ignore_case[:message] || exception.message.include?(ignore_case[:message]))
+    ignore.any? do |ignore_case|
+      ignore_case[:class] == exception.class.name && (!ignore_case.key?(:message) || !!ignore_case[:message].match(exception.message))
     end
   end
 

@@ -46,7 +46,7 @@ describe AirbrakeHandler do
     run_status = stub(:failed? => true, :exception => Exception.new("error"))
     client = mock
     handler = AirbrakeHandler.new(:api_key => "fake")
-    handler.ignore << {:class => "Exception", :message => "error"}
+    handler.ignore << {:class => "Exception", :message => /error/}
     handler.stubs(:run_status).returns(run_status)
     handler.stubs(:client).returns(client)
     handler.stubs(:airbrake_params).returns({})
@@ -59,14 +59,21 @@ describe AirbrakeHandler do
     run_status = stub(:failed? => true, :exception => Exception.new("important error"))
     client = mock
     handler = AirbrakeHandler.new(:api_key => "fake")
-    handler.ignore << {:class => "Exception", :message => "not important error"}
-    handler.ignore << {:class => "Exception", :message => "some error"}
+    handler.ignore << {:class => "Exception", :message => /not important error/}
+    handler.ignore << {:class => "Exception", :message => /some error/}
     handler.stubs(:run_status).returns(run_status)
     handler.stubs(:client).returns(client)
     handler.stubs(:airbrake_params).returns({})
 
     client.expects(:post!).once
     handler.report
+  end
+
+  it "should ignore exception by message regexp" do
+    handler = AirbrakeHandler.new(:api_key => "fake")
+    handler.ignore << {:class => "Exception", :message => /catch me if you can/}
+
+    assert handler.ignore_exception?(Exception.new("catch me if you can"))
   end
 
   it "should return Airbrake params" do
