@@ -35,6 +35,10 @@ airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => "Connecti
 
 [![Build Status](https://secure.travis-ci.org/morgoth/airbrake_handler.png)](http://travis-ci.org/morgoth/airbrake_handler)
 
+## Contributors
+
+* [Anton Mironov](https://github.com/mironov)
+
 ## Copyright
 
-Copyright (c) 2011 Adam Jacob, Wojciech Wnętrzak See LICENSE for details.
+Copyright (c) 2012 Adam Jacob, Wojciech Wnętrzak See LICENSE for details.
