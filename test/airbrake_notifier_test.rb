@@ -17,14 +17,55 @@ describe AirbrakeHandler do
   end
 
   it "should report exception using client" do
-    run_status = stub(:failed? => true, :exception => "Exception")
+    exception = Exception.new
+    run_status = stub(:failed? => true, :exception => exception)
     client = mock
     handler = AirbrakeHandler.new(:api_key => "fake")
     handler.stubs(:run_status).returns(run_status)
     handler.stubs(:client).returns(client)
     handler.stubs(:airbrake_params).returns({})
 
-    client.expects(:post!).with("Exception", {})
+    client.expects(:post!).with(exception, {})
+    handler.report
+  end
+
+  it "should not report ignored exception" do
+    run_status = stub(:failed? => true, :exception => Exception.new)
+    client = mock
+    handler = AirbrakeHandler.new(:api_key => "fake")
+    handler.ignore << {:class => "Exception"}
+    handler.stubs(:run_status).returns(run_status)
+    handler.stubs(:client).returns(client)
+    handler.stubs(:airbrake_params).returns({})
+
+    client.expects(:post!).never
+    handler.report
+  end
+
+  it "should not report ignored exception with specific message" do
+    run_status = stub(:failed? => true, :exception => Exception.new("error"))
+    client = mock
+    handler = AirbrakeHandler.new(:api_key => "fake")
+    handler.ignore << {:class => "Exception", :message => "error"}
+    handler.stubs(:run_status).returns(run_status)
+    handler.stubs(:client).returns(client)
+    handler.stubs(:airbrake_params).returns({})
+
+    client.expects(:post!).never
+    handler.report
+  end
+
+  it "should report exception if its message doesn't match any message of ignored exceptions" do
+    run_status = stub(:failed? => true, :exception => Exception.new("important error"))
+    client = mock
+    handler = AirbrakeHandler.new(:api_key => "fake")
+    handler.ignore << {:class => "Exception", :message => "not important error"}
+    handler.ignore << {:class => "Exception", :message => "some error"}
+    handler.stubs(:run_status).returns(run_status)
+    handler.stubs(:client).returns(client)
+    handler.stubs(:airbrake_params).returns({})
+
+    client.expects(:post!).once
     handler.report
   end
 
