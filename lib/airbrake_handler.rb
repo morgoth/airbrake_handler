@@ -22,7 +22,7 @@ require "toadhopper"
 class AirbrakeHandler < Chef::Handler
   VERSION = "0.3.0"
 
-  attr_accessor :options, :api_key, :ignore
+  attr_accessor :options, :api_key, :ignore, :notify_host
 
   def initialize(options={})
     @api_key = options.delete(:api_key)
