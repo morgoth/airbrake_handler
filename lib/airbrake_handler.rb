@@ -26,7 +26,8 @@ class AirbrakeHandler < Chef::Handler
 
   def initialize(options={})
     @api_key = options.delete(:api_key)
-    @ignore  = options.delete(:ignore) || []
+    @notify_host = options.delete(:notify_host) || nil
+    @ignore = options.delete(:ignore) || []
     @options = options
   end
 
@@ -59,6 +60,6 @@ class AirbrakeHandler < Chef::Handler
 
   def client
     raise ArgumentError.new("You must specify Airbrake api key") unless api_key
-    Toadhopper.new(api_key)
+    Toadhopper.new(api_key, :notify_host => @notify_host)
   end
 end
