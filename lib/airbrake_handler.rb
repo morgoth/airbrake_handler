@@ -20,7 +20,7 @@ require "chef/handler"
 require "toadhopper"
 
 class AirbrakeHandler < Chef::Handler
-  VERSION = "0.3.0"
+  VERSION = "0.4.0"
 
   attr_accessor :options, :api_key, :ignore, :notify_host
 
