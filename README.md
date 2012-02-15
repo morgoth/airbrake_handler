@@ -23,6 +23,11 @@ You can pass more options to AirbrakeHander initializer, i.e:
 AirbrakeHandler.new(:api_key => "your-airbrake-api-key", :framework_env => "production")
 ```
 
+Toadhopper options:
+
+* :api_key
+* :notify_host
+
 If you want to ignore specific exceptions, you can do this like that:
 
 ```ruby
@@ -38,6 +43,7 @@ airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => /Connecti
 ## Contributors
 
 * [Anton Mironov](https://github.com/mironov)
+* [Benedikt Böhm](https://github.com/hollow)
 
 ## Copyright
 
