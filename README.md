@@ -36,6 +36,12 @@ airbrake_handler.ignore << {:class => "SystemExit"}
 airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => /Connection reset by peer/}
 ```
 
+### Automation
+
+If you would like to install `airbrake_handler` by Chef itself, you can use cookbook:
+
+[Airbrake Handler Cookbook](https://github.com/cgriego/airbrake_handler_cookbook)
+
 ## Continuous Integration
 
 [![Build Status](https://secure.travis-ci.org/morgoth/airbrake_handler.png)](http://travis-ci.org/morgoth/airbrake_handler)
