@@ -24,11 +24,11 @@ class AirbrakeHandler < Chef::Handler
 
   attr_accessor :options, :api_key, :ignore, :notify_host
 
-  def initialize(options={})
-    @api_key = options.delete(:api_key)
+  def initialize(options = {})
+    @api_key     = options.delete(:api_key)
     @notify_host = options.delete(:notify_host) || nil
-    @ignore = options.delete(:ignore) || []
-    @options = options
+    @ignore      = options.delete(:ignore) || []
+    @options     = options
   end
 
   def report
@@ -47,19 +47,23 @@ class AirbrakeHandler < Chef::Handler
 
   def airbrake_params
     {
-      :notifier_name => "Chef Airbrake Notifier", :notifier_version => VERSION, :notifier_url => "https://github.com/morgoth/airbrake_handler",
-      :component => run_status.node.name, :url => nil, :environment => {},
-      :params => {
-        :start_time => run_status.start_time,
-        :end_time => run_status.end_time,
+      :notifier_name    => "Chef Airbrake Notifier",
+      :notifier_version => VERSION,
+      :notifier_url     => "https://github.com/morgoth/airbrake_handler",
+      :component        => run_status.node.name,
+      :url              => nil,
+      :environment      => {},
+      :params           => {
+        :start_time   => run_status.start_time,
+        :end_time     => run_status.end_time,
         :elapsed_time => run_status.elapsed_time,
-        :run_list => run_status.node.run_list.to_s
+        :run_list     => run_status.node.run_list.to_s
       }
     }.merge(options)
   end
 
   def client
     raise ArgumentError.new("You must specify Airbrake api key") unless api_key
-    Toadhopper.new(api_key, :notify_host => @notify_host)
+    Toadhopper.new(api_key, :notify_host => notify_host)
   end
 end

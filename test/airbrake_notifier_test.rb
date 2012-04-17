@@ -90,6 +90,7 @@ describe AirbrakeHandler do
       :end_time => Time.mktime(2011,1,2), :elapsed_time => Time.mktime(2011,1,3))
     handler = AirbrakeHandler.new(:api_key => "fake")
     handler.stubs(:run_status => run_status)
+
     assert_equal Hash, handler.airbrake_params.class
   end
 end
