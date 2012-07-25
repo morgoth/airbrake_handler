@@ -40,7 +40,7 @@ airbrake_handler.ignore << {:class => "Errno::ECONNRESET", :message => /Connecti
 
 If you would like to install `airbrake_handler` by Chef itself, you can use cookbook:
 
-[Airbrake Handler Cookbook](https://github.com/cgriego/airbrake_handler_cookbook)
+[Airbrake Handler Cookbook](https://github.com/cgriego/chef-airbrake_handler)
 
 ## Continuous Integration
 
