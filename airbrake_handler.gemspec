@@ -1,15 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
+require "airbrake_handler"
 
 Gem::Specification.new do |s|
   s.name        = "airbrake_handler"
-  s.version     = "0.4.0"
+  s.version     = AirbrakeHandler::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Adam Jacob", "Wojciech Wnętrzak"]
   s.email       = ["w.wnetrzak@gmail.com"]
   s.homepage    = "https://github.com/morgoth/airbrake_handler"
   s.summary     = %q{Chef handler for sending exceptions to Airbrake}
   s.description = %q{Chef handler for sending exceptions to Airbrake}
+  s.license     = "Apache"
 
   s.rubyforge_project = "airbrake_handler"
 

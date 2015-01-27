@@ -1,3 +1,9 @@
+## 0.5.0 (Jan 27, 2015)
+
+Features:
+
+  - Added support for passing custom params (@jeroenj)
+
 ## 0.4.0 (Feb 15, 2012)
 
 Features:

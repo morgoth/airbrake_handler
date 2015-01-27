@@ -4,5 +4,4 @@ cache: bundler
 notifications:
   disabled: true
 rvm:
-  - 1.9.3
   - 2.2

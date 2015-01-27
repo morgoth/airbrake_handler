@@ -2,7 +2,7 @@
 
 Report [Chef](http://www.opscode.com/chef) exceptions to [Airbrake](http://airbrake.io)
 
-Works fine with chef versions: 0.9.x and 0.10.x
+Works fine with chef versions above 0.9.x
 
 ## Usage
 
@@ -44,12 +44,13 @@ If you would like to install `airbrake_handler` by Chef itself, you can use cook
 
 ## Continuous Integration
 
-[![Build Status](https://secure.travis-ci.org/morgoth/airbrake_handler.png)](http://travis-ci.org/morgoth/airbrake_handler)
+[![Build Status](https://travis-ci.org/morgoth/airbrake_handler.svg?branch=master)](https://travis-ci.org/morgoth/airbrake_handler)
 
 ## Contributors
 
 * [Anton Mironov](https://github.com/mironov)
 * [Benedikt Böhm](https://github.com/hollow)
+* [Jeroen Jacobs](https://github.com/jeroenj)
 
 ## Copyright
 
