@@ -93,4 +93,14 @@ describe AirbrakeHandler do
 
     refute_empty handler.airbrake_params
   end
+
+  it "merges Airbrake params" do
+    node = stub(:name => "node-name", :run_list => "cookbook::recipe")
+    run_status = stub(:node => node, :start_time => Time.mktime(2011,1,1),
+      :end_time => Time.mktime(2011,1,2), :elapsed_time => Time.mktime(2011,1,3))
+    handler = AirbrakeHandler.new(api_key: "fake", params: {custom: "custom"})
+    handler.stubs(:run_status => run_status)
+
+    assert_equal "custom", handler.airbrake_params[:params][:custom]
+  end
 end
