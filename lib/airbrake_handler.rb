@@ -22,12 +22,13 @@ require "toadhopper"
 class AirbrakeHandler < Chef::Handler
   VERSION = "0.4.0"
 
-  attr_accessor :options, :api_key, :ignore, :notify_host
+  attr_accessor :options, :api_key, :ignore, :notify_host, :params
 
   def initialize(options = {})
     @api_key     = options.delete(:api_key)
     @notify_host = options.delete(:notify_host) || nil
     @ignore      = options.delete(:ignore) || []
+    @params      = options.delete(:params) || {}
     @options     = options
   end
 
@@ -58,7 +59,7 @@ class AirbrakeHandler < Chef::Handler
         :end_time     => run_status.end_time,
         :elapsed_time => run_status.elapsed_time,
         :run_list     => run_status.node.run_list.to_s
-      }
+      }.merge(params)
     }.merge(options)
   end
 
