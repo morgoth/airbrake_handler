@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency("chef", ">= 0.9.0")
   s.add_dependency("toadhopper", ">= 2.0")
 
-  s.add_development_dependency("mocha")
+  s.add_development_dependency("mocha", ">= 1.1.0")
 end

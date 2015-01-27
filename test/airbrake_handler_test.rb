@@ -91,6 +91,6 @@ describe AirbrakeHandler do
     handler = AirbrakeHandler.new(:api_key => "fake")
     handler.stubs(:run_status => run_status)
 
-    assert_equal Hash, handler.airbrake_params.class
+    refute_empty handler.airbrake_params
   end
 end
