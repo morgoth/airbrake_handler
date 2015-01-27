@@ -1,4 +1,4 @@
-require "helper"
+require "minitest_helper"
 
 describe AirbrakeHandler do
   before do
