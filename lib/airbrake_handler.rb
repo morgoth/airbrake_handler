@@ -54,6 +54,7 @@ class AirbrakeHandler < Chef::Handler
       :component        => run_status.node.name,
       :url              => nil,
       :environment      => {},
+      :framework_env    => "Ilona",
       :params           => {
         :start_time   => run_status.start_time,
         :end_time     => run_status.end_time,
